@@ -70,6 +70,12 @@ export class AuthController {
   signinUser(@Body() dto: AuthDtoSignInDash) {
     return this.authService.signinUser(dto);
   }
+
+  @Public()
+  @Get("user/details/:id")
+  userDetails(@Param("id")  id:string){
+    return this.authService.userDetails(+id)
+  }
   
  
   // @Post('/user/logout')

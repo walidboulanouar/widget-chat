@@ -145,6 +145,21 @@ export class AuthService {
     return token;
   }
 
+  async userDetails(id:number){
+    const user = await this.prisma.client.findUnique({
+      where: {
+        id: id,
+      },
+      include:{
+        Chat:true,
+      }
+    });
+
+    if (!user) throw new ForbiddenException('user not found');
+
+    return user;
+  }
+
   async signinUser(dto: AuthDtoSignInDash) {
 
    
