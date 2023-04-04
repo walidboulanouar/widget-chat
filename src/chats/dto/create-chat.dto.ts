@@ -8,6 +8,7 @@ export class CreateChatDto {
 }
 
 export class FeedbackDto {
+    
     @IsNotEmpty()
     @IsNumber()
     chatId:number;
