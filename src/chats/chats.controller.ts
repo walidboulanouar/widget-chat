@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ChatsService } from './chats.service';
 import { CreateChatDto, FeedbackDto, ResponseDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
+import { Public } from 'src/common/decorators';
 
+@Public()
 @Controller('chats')
 export class ChatsController {
   constructor(private readonly chatsService: ChatsService) {}
