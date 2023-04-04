@@ -113,8 +113,19 @@ export class ChatsService {
     return allchat;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} chat`;
+  async findOne(id: number) {
+    const chat= await this.prisma.chat.findUnique({
+      where:{
+        id:id,
+      },
+      include:{
+        discussions:true,
+        _count:true,
+      }
+    })
+    if(!chat) throw new ForbiddenException("this chat dosn't exist");
+    
+    return chat;
   }
 
   update(id: number, updateChatDto: UpdateChatDto) {
