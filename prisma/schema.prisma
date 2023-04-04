@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://backendsedihisha_ali:Walid0624680@84.16.234.19:3306/backendsedihisha_ChatWidget"
+}
+
+model Chat {
+  id          Int          @id @default(autoincrement())
+  user        Client?      @relation(fields: [userId], references: [id])
+  userId      Int?
+  title       String?
+  answer1     String?
+  answer2     String?
+  rate        Rate?
+  discussions Discussion[]
+}
+
+model Discussion {
+  id        Int      @id @default(autoincrement())
+  chat      Chat?    @relation(fields: [chatId], references: [id])
+  chatId    Int?
+  message   String   @db.VarChar(1900)
+  answer    String   @db.VarChar(3000)
+  createdAt DateTime @default(now())
+}
+
+model Client {
+  id           Int      @id @default(autoincrement())
+  email        String
+  password     String
+  phone_number String   @unique
+  level        String?
+  class        String?
+  urlPhoto     String?  @db.LongText
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  Chat         Chat[]
+}
+
+enum Rate {
+  Good
+  Bad
+  Normal
+}

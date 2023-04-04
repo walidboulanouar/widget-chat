@@ -1,0 +1,55 @@
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { ChatsService } from './chats.service';
+import { CreateChatDto, FeedbackDto, ResponseDto } from './dto/create-chat.dto';
+import { UpdateChatDto } from './dto/update-chat.dto';
+
+@Controller('chats')
+export class ChatsController {
+  constructor(private readonly chatsService: ChatsService) {}
+
+  @Post("create")
+  create(@Body() createChatDto: CreateChatDto) {
+    return this.chatsService.create(createChatDto);
+  }
+
+  @Get("findLast/:id")
+  findLast(@Param("id") id:string){
+    return this.chatsService.finlast(+id);
+  }
+  
+
+  @Get("findAll/:userId")
+  findAll(@Param('userId') id: string) {
+    return this.chatsService.findAll(+id);
+  }
+
+  @Get('findone/chat/:id')
+  findOne(@Param('id') id: string) {
+    return this.chatsService.findOne(+id);
+  }
+
+  @Get('findone/list/chat/:id')
+  findOneList(@Param('id') id: string) {
+    return this.chatsService.findOneByList(+id);
+  }
+
+  @Post("send")
+  sendMessage(@Body() dto:ResponseDto ){
+    return this.chatsService.getAnswer(dto);
+  }
+
+  @Post("create/feedback")
+  getFeedback(@Body() dto:FeedbackDto){
+    return this.chatsService.feedback(dto);
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateChatDto: UpdateChatDto) {
+    return this.chatsService.update(+id, updateChatDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.chatsService.remove(+id);
+  }
+}
