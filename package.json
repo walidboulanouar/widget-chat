@@ -6,9 +6,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "prebuild": "rimraf dist & npx prisma generate",
+    "prebuild": "npm install & npx prisma generate",
     "nest": "npm i -g @nestjs/cli",
-    "prisma": "npx prisma db push",
+    "prisma": "npm install & npx prisma db push",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
