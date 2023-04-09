@@ -36,6 +36,7 @@ model Client {
   password     String
   phone_number String   @unique
   level        String?
+  fullName     String?
   class        String?
   urlPhoto     String?  @db.LongText
   createdAt    DateTime @default(now())

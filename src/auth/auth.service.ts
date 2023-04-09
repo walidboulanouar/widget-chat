@@ -133,6 +133,7 @@ export class AuthService {
         phone_number:dto.phone_number,
         class:dto.class,
         level:dto.level,
+        fullName:dto.fullName,
       }
     });
     

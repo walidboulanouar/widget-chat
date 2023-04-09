@@ -1,5 +1,5 @@
 
-import { IsString, IsNotEmpty, IsEmail, IsPhoneNumber, IsPositive, IsIn } from 'class-validator';
+import { IsString, IsNotEmpty, IsEmail, IsPhoneNumber, IsPositive, IsIn, IsOptional } from 'class-validator';
 
 
 
@@ -14,6 +14,10 @@ export class AuthDtoSignUpDash {
     @IsNotEmpty()
     @IsString()
     phone_number: string;
+
+    @IsOptional()
+    @IsString()
+    fullName:string;
 
 
     @IsNotEmpty()

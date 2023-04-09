@@ -76,6 +76,9 @@ export class AuthController {
   userDetails(@Param("id")  id:string){
     return this.authService.userDetails(+id)
   }
+
+
+ 
   
  
   // @Post('/user/logout')
