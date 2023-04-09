@@ -8,7 +8,6 @@ import { IsString, IsNotEmpty, IsEmail, IsPhoneNumber, IsPositive, IsIn, IsOptio
 export class AuthDtoSignUpDash {
     @IsNotEmpty()
     @IsString()
-    @IsEmail()
     email: string;
 
     @IsNotEmpty()
@@ -40,7 +39,6 @@ export class AuthDtoSignUpDash {
 export class AuthDtoSignInDash {
     @IsNotEmpty()
     @IsString()
-    @IsEmail()
     phone_number: string;
 
     @IsNotEmpty()
@@ -52,7 +50,6 @@ export class AuthDtoSignInDash {
 export class AuthDtoSignIn {
     @IsNotEmpty()
     @IsString()
-    @IsEmail()
     email: string;
 
    
