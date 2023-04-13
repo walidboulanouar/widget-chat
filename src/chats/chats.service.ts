@@ -3,6 +3,7 @@ import { CreateChatDto, ResponseDto,FeedbackDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Discussion } from '@prisma/client';
+import axios from 'axios';
 
 
 @Injectable()
@@ -34,14 +35,31 @@ export class ChatsService {
   }
 
   async getAnswer(dto:ResponseDto){
-    await this.prisma.discussion.create({
-      data:{
-        chatId:dto.chatId,
-        message:dto.message,
-        answer:"we will impliment this part, don't worry, we will analyse your data ana depend on it we will send the response"
+    let customResponse = 'No response received';
+
+  try {
+    const response = await axios.post(
+      'http://localhost:5005/webhooks/rest/webhook',
+      {
+        message: dto.message,
       }
-    })
-    return {answer:"we will impliment this part, don't worry, we will analyse your data ana depend on it we will send the response"};
+    );
+
+    customResponse = response.data?.response || 'No response received';
+  } catch (error) {
+    console.error('Error while fetching response:', error.message);
+    customResponse = 'Unable to reach the endpoint';
+  }
+
+  await this.prisma.discussion.create({
+    data: {
+      chatId: dto.chatId,
+      message: dto.message,
+      answer: customResponse,
+    },
+  });
+
+  return { answer: customResponse };
   }
 
   async feedback(dto:FeedbackDto){
