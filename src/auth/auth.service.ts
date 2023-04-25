@@ -134,6 +134,9 @@ export class AuthService {
         class:dto.class,
         level:dto.level,
         fullName:dto.fullName,
+        student_number:dto.student_number,
+        guide_academic:dto.guide_academic,
+        edu_email:dto.edu_email,
       }
     });
     

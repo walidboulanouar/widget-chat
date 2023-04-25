@@ -27,6 +27,20 @@ export class AuthDtoSignUpDash {
     @IsNotEmpty()
     @IsString()
     level:string;
+
+    @IsOptional()
+    @IsString()
+    student_number:string;
+
+
+    @IsOptional()
+    @IsString()
+    edu_email:string;
+
+
+    @IsOptional()
+    @IsString()
+    guide_academic:string;
     
 
     @IsNotEmpty()
