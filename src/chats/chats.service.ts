@@ -36,7 +36,7 @@ export class ChatsService {
 
     try {
       const response = await axios.post(
-        'http://localhost:5005/webhooks/rest/webhook',
+        'http://34.69.52.177:5005/webhooks/rest/webhook',
         {
           message: dto.message,
           sender: dto.userId,
