@@ -59,7 +59,25 @@ export class ChatsService {
 
     return { answer: customResponse };
   }
-
+  async findAllFeedbacks(id:number){
+    const allchat = await this.prisma.chat.findMany({
+      where: {
+        userId: id,
+      },
+      include: {
+        discussions: true,
+      },
+    });
+    let chats = [];
+    allchat.forEach((chat) => {
+      if(chat.answer1){
+        const list=[chat.answer1,chat.answer2,chat.rate]
+        chats.push(list);
+      }
+      
+    });
+    return chats;
+  }
   async feedback(dto: FeedbackDto) {
     const check = await this.prisma.chat.findUnique({
       where: {

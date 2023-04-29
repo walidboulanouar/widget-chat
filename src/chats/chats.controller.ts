@@ -52,6 +52,11 @@ export class ChatsController {
     return this.chatsService.feedback(dto);
   }
 
+  @Get("feedback/findall/:id")
+  getAllFeedbacks(@Param('id') id: string){
+    return this.chatsService.findAllFeedbacks(+id)
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateChatDto: UpdateChatDto) {
     return this.chatsService.update(+id, updateChatDto);
