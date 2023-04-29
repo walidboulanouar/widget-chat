@@ -32,6 +32,10 @@ export class ChatsController {
     return this.chatsService.findAll(+id);
   }
 
+  @Get("feedbacks")
+  findAllFeedbacks(){
+    return this.chatsService.getAllFeedbacks();
+  }
   @Get('findone/chat/:id')
   findOne(@Param('id') id: string) {
     return this.chatsService.findOne(+id);
