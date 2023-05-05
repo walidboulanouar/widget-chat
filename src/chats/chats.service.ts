@@ -35,6 +35,7 @@ export class ChatsService {
     let customResponse = 'No response received';
 
     try {
+      console.log("work for me")
       const response = await axios.post(
         'http://34.69.52.177:5005/webhooks/rest/webhook',
         {
@@ -44,6 +45,7 @@ export class ChatsService {
       );
 
       customResponse = response.data[0]?.text || 'No response received';
+      console.log(customResponse);
     } catch (error) {
       console.error('Error while fetching response:', error.message);
       customResponse = 'Unable to reach the endpoint';
