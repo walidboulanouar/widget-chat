@@ -30,6 +30,24 @@ export class FeedbackDto {
 
 }
 
+export class PoolDto {
+    @IsNotEmpty()
+    @IsNumber()
+    chatId:number;
+
+
+    @IsNotEmpty()
+    @IsString()
+    answer1:string;
+
+
+    @IsNotEmpty()
+    @IsString()
+    answer2:string;
+
+
+}
+
 export class ResponseDto {
     @IsNotEmpty()
     @IsNumber()
