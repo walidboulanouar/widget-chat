@@ -1,5 +1,5 @@
 import { Injectable, ForbiddenException } from '@nestjs/common';
-import { CreateChatDto, ResponseDto, FeedbackDto } from './dto/create-chat.dto';
+import { CreateChatDto, ResponseDto, PoolDto, FeedbackDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Discussion } from '@prisma/client';
@@ -95,6 +95,27 @@ export class ChatsService {
       
     });
     return chats;
+  }
+
+  async pool(dto:PoolDto){
+    const check= await this.prisma.chat.findUnique({
+      where:{
+        id:dto.chatId,
+      },
+    } )
+    if(!check) throw new ForbiddenException("Chat not found")
+    const feedback=  await this.prisma.chat.update({
+      where:{
+        id:dto.chatId,
+      },
+      data:{
+        answer1:dto.answer1,
+        answer2:dto.answer2,
+        rate:"Good",
+      }
+    })
+
+    return feedback;
   }
   
   async feedback(dto: FeedbackDto) {

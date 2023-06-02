@@ -8,7 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ChatsService } from './chats.service';
-import { CreateChatDto, FeedbackDto, ResponseDto } from './dto/create-chat.dto';
+import { CreateChatDto, FeedbackDto,PoolDto, ResponseDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
 import { Public } from 'src/common/decorators';
 
@@ -25,6 +25,11 @@ export class ChatsController {
   @Get('findLast/:id')
   findLast(@Param('id') id: string) {
     return this.chatsService.finlast(+id);
+  }
+
+  @Post("create/poll")
+  getpool(@Body() dto:PoolDto){
+    return this.chatsService.pool(dto);
   }
 
   @Get('findAll/:userId')
