@@ -1,5 +1,5 @@
 import { Injectable, ForbiddenException } from '@nestjs/common';
-import { CreateChatDto, ResponseDto, PoolDto, FeedbackDto } from './dto/create-chat.dto';
+import { CreateChatDto, ResponseDto, FeedbackDto, PoolDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Discussion } from '@prisma/client';
@@ -109,9 +109,27 @@ export class ChatsService {
         id:dto.chatId,
       },
       data:{
-        answer1:dto.answer1,
-        answer2:dto.answer2,
-        rate:"Good",
+        answerp1:dto.answer1,
+        answerp2:dto.answer2,
+        answerp3: dto.answer3,
+        answerp4: dto.answer4,
+        answerp5: dto.answer5,
+        answerp6: dto.answer6,
+        answerp7: dto.answer7,
+        answerp8: dto.answer8,
+        answerp9: dto.answer9,
+        answerp10: dto.answer10,
+        answerp11: dto.answer11,
+        answerp12: dto.answer12,
+        answerp13: dto.answer13,
+        answerp14: dto.answer14,
+        answerp15: dto.answer15,
+        answerp16: dto.answer16,
+        answerp17: dto.answer17,
+        answerp18: dto.answer18,
+        answerp19: dto.answer19,
+        answerp20: dto.answer20,
+        answerp21: dto.answer21,
       }
     })
 
@@ -132,6 +150,26 @@ export class ChatsService {
       data: {
         answer1: dto.answer1,
         answer2: dto.answer2,
+        answer3: dto.answer3,
+        answer4: dto.answer4,
+        answer5: dto.answer5,
+        answer6: dto.answer6,
+        answer7: dto.answer7,
+        answer8: dto.answer8,
+        answer9: dto.answer9,
+        answer10: dto.answer10,
+        answer11: dto.answer11,
+        answer12: dto.answer12,
+        answer13: dto.answer13,
+        answer14: dto.answer14,
+        answer15: dto.answer15,
+        answer16: dto.answer16,
+        answer17: dto.answer17,
+        answer18: dto.answer18,
+        answer19: dto.answer19,
+        answer20: dto.answer20,
+        answer21: dto.answer21,
+        chatType:dto.chatType,
         rate: dto.rate,
       },
     });

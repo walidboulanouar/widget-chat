@@ -17,8 +17,55 @@ model Chat {
   title       String?
   answer1     String?
   answer2     String?
+  answer3     String?
+  answer4     String?
+  answer5     String?
+  answer6     String?
+  answer7     String?
+  answer8     String?
+  answer9     String?
+  answer10    String?
+  answer11    String?
+  answer12    String?
+  answer13    String?
+  answer14    String?
+  answer15    String?
+  answer16    String?
+  answer17    String?
+  answer18    String?
+  answer19    String?
+  answer20    String?
+  answer21    String?
+  answerp1    String?
+  answerp2    String?
+  answerp3    String?
+  answerp4    String?
+  answerp5    String?
+  answerp6    String?
+  answerp7    String?
+  answerp8    String?
+  answerp9    String?
+  answerp10   String?
+  answerp11   String?
+  answerp12   String?
+  answerp13   String?
+  answerp14   String?
+  answerp15   String?
+  answerp16   String?
+  answerp17   String?
+  answerp18   String?
+  answerp19   String?
+  answerp20   String?
+  answerp21   String?
+  chatType    ChatType     @default(Custom)
   rate        Rate?
   discussions Discussion[]
+}
+
+enum ChatType {
+  Custom
+  Both
+  Menu
 }
 
 model Discussion {
